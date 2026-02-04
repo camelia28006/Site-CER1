@@ -1,0 +1,177 @@
+/* Importation de la police */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Évite les scrollbars bizarres à cause des bulles */
+}
+
+/* --- STRUCTURE PRINCIPALE --- */
+
+.mobile-container {
+    width: 100%;
+    max-width: 450px; /* Taille max type "grand smartphone" sur PC */
+    min-height: 100vh;
+    background-color: #E6D1E9;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+/* --- BULLS DE FOND --- */
+.mobile-container::before, .mobile-container::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.mobile-container::before {
+    width: 250px;
+    height: 250px;
+    background-color: #FFB366;
+    top: 15%;
+    left: -80px;
+}
+
+.mobile-container::after {
+    width: 200px;
+    height: 200px;
+    background-color: #26D0CE;
+    bottom: 5%;
+    right: -60px;
+}
+
+/* --- CONTENU --- */
+header, main, footer {
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+
+h1 { font-weight: 800; font-size: 2.2rem; color: #1a1a1a; }
+h2 { font-size: 1.3rem; margin-top: 10px; }
+
+.card {
+    background: white;
+    border-radius: 30px;
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* --- BOUTONS ET FORMULAIRES --- */
+.btn-nav {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #444;
+    background: linear-gradient(90deg, #A8C0E8, #E6D1E9);
+}
+
+.btn-postuler {
+    display: inline-block;
+    background-color: #7B96FF;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+input, textarea {
+    background-color: #eee;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    width: 100%;
+}
+
+.btn-submit {
+    background-color: #FFB366;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.75rem;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* 1. Écrans Tablettes et PC (Largeur > 768px) */
+@media screen and (min-width: 768px) {
+    body {
+        background-color: #dcdcdc;
+    }
+    
+    .mobile-container {
+        max-width: 800px; /* On élargit pour tablette */
+        min-height: 90vh; /* On ne prend plus tout l'écran en hauteur */
+        border-radius: 40px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+    }
+
+    .card {
+        padding: 40px;
+    }
+
+    /* Sur tablette/PC, on peut mettre les boutons côte à côte */
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .btn-nav {
+        margin-bottom: 0;
+    }
+}
+
+/* 2. Très grands écrans (PC Desktop) */
+@media screen and (min-width: 1200px) {
+    .mobile-container {
+        max-width: 1000px;
+    }
+    
+    h1 { font-size: 3rem; }
+}
+
+/* 3. Ajustement pour les tous petits mobiles (Hauteur réduite) */
+@media screen and (max-height: 650px) {
+    .mobile-container { padding: 10px; }
+    h1 { font-size: 1.8rem; }
+    .card { padding: 15px; }
+}
